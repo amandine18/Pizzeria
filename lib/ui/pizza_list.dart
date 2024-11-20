@@ -17,19 +17,13 @@ class PizzaList extends StatefulWidget {
 }
 
 class _PizzaListState extends State<PizzaList> {
-  //!!Version avant TP5
-  // List<Pizza> _pizzas = [];
+  List<Pizza> _pizzas = [];
   final String title = 'Nos Pizzas';
-
-  late Future<List<Pizza>> _pizzas;
-  final PizzeriaService _service = PizzeriaService();
 
   @override
   void initState() {
     super.initState();
-    //!!Version avant TP5
-    // _pizzas = PizzaData.buildList();
-    _pizzas = _service.fetchPizzas();
+    _pizzas = PizzaData.buildList();
   }
 
   @override
