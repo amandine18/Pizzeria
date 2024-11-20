@@ -136,12 +136,7 @@ class _PanierState extends State<Panier> {
       padding: const EdgeInsets.all(8.0),
       child: Row(
         children: [
-          //Image.asset pour avant le TP5 (récupère les images dans le répertoire assets du projet)
-          // Image.asset(
-          //   'assets/images/pizzas/${pizza.image}',
-          //   height: 105,
-          // ),
-          //Image.network pour le TP5 (récupère les images via une URL récupérée en local)
+          //Image.network récupère les images via une URL récupérée en local
           Image.network(
             Pizza.fixUrl(pizza.image),
             height: 105,
@@ -241,33 +236,5 @@ class _PanierState extends State<Panier> {
         ],
       ),
     );
-
-    // return ListTile(
-    //   leading: const Icon(Icons.local_pizza),
-    //   title: Text(pizza.title),
-    //   subtitle: Column(
-    //     crossAxisAlignment: CrossAxisAlignment.start,
-    //     children: [
-    //       Text('${pizza.price} €'),
-    //       Text('${cartItem.quantity}'),
-    //     ],
-    //   ),
-    //   trailing: Text(
-    //     'Sous-total : ${(pizza.total * cartItem.quantity).toStringAsFixed(2)} €',
-    //   ),
-    // );
-
-    // return Row(
-    //   children: [
-    //     const Text('Image'),
-    //     Column(
-    //       children: [
-    //         Text(cartItem.pizza.title),
-    //         const Text('Prix'),
-    //         const Text('Sous-total'),
-    //       ],
-    //     )
-    //   ],
-    // );
   }
 }

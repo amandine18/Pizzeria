@@ -6,7 +6,6 @@ import 'package:pizzeria/ui/share/pizzeria_style.dart';
 
 import '../models/cart.dart';
 import '../models/pizza.dart';
-import '../models/pizza_data.dart';
 import 'share/appbar_widget.dart';
 
 class PizzaList extends StatefulWidget {
@@ -18,8 +17,6 @@ class PizzaList extends StatefulWidget {
 }
 
 class _PizzaListState extends State<PizzaList> {
-  //!!Version avant TP5
-  // List<Pizza> _pizzas = [];
   final String title = 'Nos Pizzas';
 
   late Future<List<Pizza>> _pizzas;
@@ -28,8 +25,6 @@ class _PizzaListState extends State<PizzaList> {
   @override
   void initState() {
     super.initState();
-    //!!Version avant TP5
-    // _pizzas = PizzaData.buildList();
     _pizzas = _service.fetchPizzas();
   }
 
@@ -37,14 +32,6 @@ class _PizzaListState extends State<PizzaList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppbarWidget(title, widget._cart),
-      //!!Version avant TP5
-      // body: ListView.builder(
-      //   padding: const EdgeInsets.all(8.0),
-      //   itemCount: _pizzas.length,
-      //   itemBuilder: (context, index){
-      //     return _buildRow(_pizzas[index]);
-      //   }
-      // ),
       body: FutureBuilder<List<Pizza>>(
         future: _pizzas, 
         builder: (context, snapshot) {
@@ -99,12 +86,6 @@ class _PizzaListState extends State<PizzaList> {
           subtitle: Text(pizza.garniture),
           leading: const Icon(Icons.local_pizza),
         ),
-        // Image.asset(
-        //   'assets/images/pizzas/${pizza.image}',
-        //   height: 120,
-        //   width: MediaQuery.of(context).size.width,
-        //   fit: BoxFit.fitWidth,
-        // ),
         Image.network(
             Pizza.fixUrl(pizza.image),
             height: 120,

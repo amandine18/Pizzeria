@@ -57,19 +57,4 @@ class Pizza{
   static String fixUrl(String url) {
     return url.replaceAll('localhost', '10.0.2.2');
   }
-  //ajouter un hassCode avec id, pate, taille et sauce
-  //Ca n'a pas fonctionné
-  // @override
-  // bool operator ==(Object other) {
-  //   if (identical(this, other)) return true;
-
-  //   return other is Pizza &&
-  //       other.id == id &&
-  //       other.pate == pate &&
-  //       other.taille == taille &&
-  //       other.sauce == sauce;
-  // }
-
-  // @override
-  // int get hashCode => id.hashCode ^ pate.hashCode ^ taille.hashCode ^ sauce.hashCode;
 }
