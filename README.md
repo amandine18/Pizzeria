@@ -1,6 +1,6 @@
-# pizzeria
+# Pizzeria
 
-A new Flutter project.
+Ce projet flutter est une application mobile pour une pizzeria. On y retrouve le menu avec la partie pizza, la liste des différentes pizzas puis leur détail avec le choix de modifier des éléments. On a la possibilité de commander des pizzas, qui s'affichent alors dans le panier avec le prix total.
 
 ## Getting Started
 
