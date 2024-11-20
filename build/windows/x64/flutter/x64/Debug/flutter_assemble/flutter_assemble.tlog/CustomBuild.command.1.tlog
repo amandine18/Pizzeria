@@ -1,0 +1,28 @@
+^C:\USERS\DURAN\DOCUMENTS\FLUTTER\PIZZERIA\BUILD\WINDOWS\X64\CMAKEFILES\69F60401051C683475DE05861E6D0BFC\FLUTTER_WINDOWS.DLL.RULE
+setlocal
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E env FLUTTER_ROOT=C:\Users\duran\flutter PROJECT_DIR=C:\Users\duran\Documents\Flutter\pizzeria FLUTTER_ROOT=C:\Users\duran\flutter FLUTTER_EPHEMERAL_DIR=C:\Users\duran\Documents\Flutter\pizzeria\windows\flutter\ephemeral PROJECT_DIR=C:\Users\duran\Documents\Flutter\pizzeria FLUTTER_TARGET=C:\Users\duran\Documents\Flutter\pizzeria\lib\main.dart DART_OBFUSCATION=false TRACK_WIDGET_CREATION=true TREE_SHAKE_ICONS=false PACKAGE_CONFIG=C:\Users\duran\Documents\Flutter\pizzeria\.dart_tool\package_config.json C:/Users/duran/flutter/packages/flutter_tools/bin/tool_backend.bat windows-x64 Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\DURAN\DOCUMENTS\FLUTTER\PIZZERIA\BUILD\WINDOWS\X64\CMAKEFILES\21F294906BFB9F8879E66D2197925C4F\FLUTTER_ASSEMBLE.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\DURAN\DOCUMENTS\FLUTTER\PIZZERIA\WINDOWS\FLUTTER\CMAKELISTS.TXT
+setlocal
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/duran/Documents/Flutter/pizzeria/windows -BC:/Users/duran/Documents/Flutter/pizzeria/build/windows/x64 --check-stamp-file C:/Users/duran/Documents/Flutter/pizzeria/build/windows/x64/flutter/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
