@@ -1,0 +1,1 @@
+ C:\\Users\\duran\\Documents\\Cours\\Flutter\\pizzeria\\.dart_tool\\flutter_build\\20ee9e97fd545ebfc391cdedea913885\\native_assets.yaml: 
