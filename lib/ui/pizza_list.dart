@@ -30,29 +30,12 @@ class _PizzaListState extends State<PizzaList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppbarWidget(title, widget._cart),
-      //!!Version avant TP5
-      // body: ListView.builder(
-      //   padding: const EdgeInsets.all(8.0),
-      //   itemCount: _pizzas.length,
-      //   itemBuilder: (context, index){
-      //     return _buildRow(_pizzas[index]);
-      //   }
-      // ),
-      body: FutureBuilder<List<Pizza>>(
-        future: _pizzas, 
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return _buildListView(snapshot.data!);
-          } else if (snapshot.hasError) {
-            return Center(
-              child: Text(
-                'Impossible de récupérer les données : ${snapshot.error}',
-                style : PizzeriaStyle.errorTextStyle,
-              ),
-            );
-          }
-          return const Center(child: CircularProgressIndicator());
-        },
+      body: ListView.builder(
+        padding: const EdgeInsets.all(8.0),
+        itemCount: _pizzas.length,
+        itemBuilder: (context, index){
+          return _buildRow(_pizzas[index]);
+        }
       ),
     );
   }
@@ -92,17 +75,11 @@ class _PizzaListState extends State<PizzaList> {
           subtitle: Text(pizza.garniture),
           leading: const Icon(Icons.local_pizza),
         ),
-        // Image.asset(
-        //   'assets/images/pizzas/${pizza.image}',
-        //   height: 120,
-        //   width: MediaQuery.of(context).size.width,
-        //   fit: BoxFit.fitWidth,
-        // ),
-        Image.network(
-            Pizza.fixUrl(pizza.image),
-            height: 120,
-            width: MediaQuery.of(context).size.width,
-            fit: BoxFit.fitWidth,
+        Image.asset(
+          'assets/images/pizzas/${pizza.image}',
+          height: 120,
+          width: MediaQuery.of(context).size.width,
+          fit: BoxFit.fitWidth,
         ),
         Container(
           padding: const EdgeInsets.all(10.0),
@@ -111,15 +88,4 @@ class _PizzaListState extends State<PizzaList> {
       ],
     );
   }
-
-  _buildListView(List<Pizza> pizzas) {
-    return ListView.builder(
-      padding: const EdgeInsets.all(8.0),
-      itemCount: pizzas.length,
-      itemBuilder: (context, index){
-        return _buildRow(pizzas[index]);
-      }
-    );
-  }
-
 }
