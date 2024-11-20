@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pizzeria/ui/pizza_details.dart';
 import 'package:pizzeria/ui/share/buy_button_widget.dart';
-import 'package:pizzeria/ui/share/pizzeria_style.dart';
 
 import '../models/cart.dart';
 import '../models/pizza.dart';
