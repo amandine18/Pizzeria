@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:pizzeria/services/pizzeria_service.dart';
-import 'package:pizzeria/ui/pizza_details.dart';
+import 'package:pizzeria/ui/pizzas/pizza_details.dart';
 import 'package:pizzeria/ui/share/buy_button_widget.dart';
 import 'package:pizzeria/ui/share/pizzeria_style.dart';
 
-import '../models/cart.dart';
-import '../models/pizza.dart';
-import 'share/appbar_widget.dart';
+import '../../models/share/cart.dart';
+import '../../models/pizzas/pizza.dart';
+import '../share/BottomNavigationBarWidget.dart';
+import '../share/appbar_widget.dart';
 
 class PizzaList extends StatefulWidget {
   final Cart _cart;
@@ -31,7 +32,7 @@ class _PizzaListState extends State<PizzaList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppbarWidget(title, widget._cart),
+      appBar: AppbarWidget(title),
       body: FutureBuilder<List<Pizza>>(
         future: _pizzas, 
         builder: (context, snapshot) {
@@ -48,6 +49,7 @@ class _PizzaListState extends State<PizzaList> {
           return const Center(child: CircularProgressIndicator());
         },
       ),
+      bottomNavigationBar: const BottomNavigationBarWidget(0, pageNum: 1),
     );
   }
   
@@ -65,13 +67,13 @@ class _PizzaListState extends State<PizzaList> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => PizzaDetails(pizza, widget._cart),
+                  builder: (context) => PizzaDetails(pizza),
                 ),
               );
             },
             child: _builPizzaDetails(pizza),
           ),
-          BuyButtonWidget(pizza, widget._cart),
+          BuyButtonWidget(pizza),
         ],
       ),
     );

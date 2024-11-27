@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import '../../models/cart.dart';
-import '../../models/pizza.dart';
+import '../../models/share/cart.dart';
+import '../../models/pizzas/pizza.dart';
 
 class BuyButtonWidget extends StatelessWidget {
   final Pizza _pizza;
-  final Cart _cart;
-  const BuyButtonWidget(this._pizza, this._cart, {super.key});
+  const BuyButtonWidget(this._pizza, {super.key});
 
   @override
   Widget build(BuildContext context) {
+    //Obtention de l'objet cart depuis le provider
+    //Nous n'écoutons pas les notifications émises
+    var cart = Provider.of<Cart>(context, listen:false);
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
@@ -37,7 +40,7 @@ class BuyButtonWidget extends StatelessWidget {
                 taille: _pizza.taille,
                 sauce: _pizza.sauce,
               );
-              _cart.addProduct(pizzaCopy);
+              cart.addProduct(pizzaCopy);
             },
           ),
         ),

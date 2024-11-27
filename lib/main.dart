@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:pizzeria/ui/pizza_list.dart';
-import 'models/cart.dart';
-import 'models/menu.dart';
+import 'package:pizzeria/ui/share/panier.dart';
+import 'package:pizzeria/ui/pizzas/pizza_list.dart';
+import 'package:provider/provider.dart';
+import 'models/share/cart.dart';
+import 'models/share/menu.dart';
+import 'ui/share/BottomNavigationBarWidget.dart';
 import 'ui/share/appbar_widget.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => Cart(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 //casser l'appli
@@ -27,6 +35,11 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: MyHomePage(title: 'Notre pizzéria'),
+      //Start the app witj the "/" named route. In this case the app starts on the FirstScreen Widget
+      routes: {
+        // '/profil': (context) => Profil(),
+        '/panier': (context) => Panier(),
+      },
     );
   }
 }
@@ -48,7 +61,7 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppbarWidget(title, _cart),
+      appBar: AppbarWidget(title),
       body: Center(
         child: ListView.builder(
           itemCount: _menus.length,
@@ -69,6 +82,7 @@ class MyHomePage extends StatelessWidget {
         ),
       ),
       backgroundColor: Colors.white,
+      bottomNavigationBar: const BottomNavigationBarWidget(0, pageNum: 0,),
     );
   }
 

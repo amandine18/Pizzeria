@@ -1,13 +1,18 @@
-import 'pizza.dart';
+import 'package:flutter/material.dart';
+import '../pizzas/pizza.dart';
 
 class CartItem {
   final Pizza pizza;
+  // final Boisson? boisson;
   int quantity;
 
   CartItem(this.pizza, [this.quantity = 1]);
+  // CartItem({this.pizza, this.quantity = 1}, {this.boisson, this.quantity = 1});
+  // CartItem({this.pizza, this.boisson, this.quantity = 1});
+  // CartItem(boisson: myboisson)
 }
 
-class Cart{
+class Cart extends ChangeNotifier{
   final List<CartItem> _items = [];
 
   List<CartItem> get items => _items;
@@ -29,7 +34,8 @@ class Cart{
       CartItem item = _items[index];
       item.quantity++;
     }
-    // notifyListeners();
+    //Emmission d'une notification de changement
+    notifyListeners();
   }
 
   void removeProduct(Pizza pizza) {
@@ -42,6 +48,8 @@ class Cart{
       } else {
         _items.removeAt(index); // Supprime l'élément si quantité = 1
       }
+      //Emmission d'une notification de changement
+      notifyListeners();
     }
   }
 
