@@ -6,7 +6,7 @@ import 'package:pizzeria/ui/share/pizzeria_style.dart';
 
 import '../../models/share/cart.dart';
 import '../../models/pizzas/pizza.dart';
-import '../share/BottomNavigationBarWidget.dart';
+import '../share/bottom_navigation_bar_widget.dart';
 import '../share/appbar_widget.dart';
 
 class PizzaList extends StatefulWidget {

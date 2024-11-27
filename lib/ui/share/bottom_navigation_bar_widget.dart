@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pizzeria/ui/share/BadgeWidget.dart';
+import 'package:pizzeria/ui/share/badge_widget.dart';
 import 'package:provider/provider.dart';
 import '../../models/share/cart.dart';
 

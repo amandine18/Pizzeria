@@ -4,7 +4,7 @@ import 'package:pizzeria/ui/pizzas/pizza_list.dart';
 import 'package:provider/provider.dart';
 import 'models/share/cart.dart';
 import 'models/share/menu.dart';
-import 'ui/share/BottomNavigationBarWidget.dart';
+import 'ui/share/bottom_navigation_bar_widget.dart';
 import 'ui/share/appbar_widget.dart';
 
 void main() {
