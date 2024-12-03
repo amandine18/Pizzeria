@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../models/pizza.dart';
-import '../models/cart.dart';
+import '../../models/pizzas/pizza.dart';
+import '../../models/share/cart.dart';
 
 class Panier extends StatefulWidget {
   final Cart _cart;

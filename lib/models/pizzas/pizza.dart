@@ -1,4 +1,4 @@
-import 'package:pizzeria/models/option_item.dart';
+import 'package:pizzeria/models/pizzas/option_item.dart';
 
 class Pizza{
   final int id;

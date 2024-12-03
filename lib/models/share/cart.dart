@@ -1,4 +1,4 @@
-import 'pizza.dart';
+import '../pizzas/pizza.dart';
 
 class CartItem {
   final Pizza pizza;

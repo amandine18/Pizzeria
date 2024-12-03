@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../models/cart.dart';
-import '../../models/pizza.dart';
+import '../../models/share/cart.dart';
+import '../../models/pizzas/pizza.dart';
 
 class BuyButtonWidget extends StatelessWidget {
   final Pizza _pizza;
