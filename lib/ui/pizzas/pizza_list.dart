@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:pizzeria/services/pizzeria_service.dart';
-import 'package:pizzeria/ui/pizza_details.dart';
+import 'package:pizzeria/ui/pizzas/pizza_details.dart';
 import 'package:pizzeria/ui/share/buy_button_widget.dart';
 import 'package:pizzeria/ui/share/pizzeria_style.dart';
 
-import '../models/cart.dart';
-import '../models/pizza.dart';
-import 'share/appbar_widget.dart';
+import '../../models/share/cart.dart';
+import '../../models/pizzas/pizza.dart';
+import '../share/appbar_widget.dart';
 
 class PizzaList extends StatefulWidget {
   final Cart _cart;

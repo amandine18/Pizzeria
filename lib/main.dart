@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pizzeria/ui/pizza_list.dart';
-import 'models/cart.dart';
-import 'models/menu.dart';
+import 'package:pizzeria/ui/pizzas/pizza_list.dart';
+import 'models/share/cart.dart';
+import 'models/share/menu.dart';
 import 'ui/share/appbar_widget.dart';
 
 void main() {

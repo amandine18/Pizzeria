@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:pizzeria/models/option_item.dart';
+import 'package:pizzeria/models/pizzas/option_item.dart';
 import 'package:pizzeria/ui/share/appbar_widget.dart';
 import 'package:pizzeria/ui/share/buy_button_widget.dart';
 import 'package:pizzeria/ui/share/pizzeria_style.dart';
 import 'package:pizzeria/ui/share/total_widget.dart';
 
-import '../models/cart.dart';
-import '../models/pizza.dart';
+import '../../models/share/cart.dart';
+import '../../models/pizzas/pizza.dart';
 
 class PizzaDetails extends StatefulWidget {
   final Pizza _pizza;
