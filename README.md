@@ -5,6 +5,7 @@ Ce projet flutter est une application mobile pour une pizzeria. On y retrouve le
 A voir dans les différents TD :
   - TD4 : application conçu avec gestion des images et des données des pizzas via le dossier "assets/images" et le fichier "pizza_datas.dart" du projet
   - TD5 : même base que le TD4 mais la gestion des images et des données des pizzas se fait via un serveur (ici Wamp) en les récupérant avec un URL et un fichier JSON
+  - TD6 : continuité du TD5 avec ajout d'une barre de navigation en bas de l'écran accessible via toutes les pages. Nombre d'éléments dans le panier visible et ajout d'un provider.
 
 ## Getting Started
 
