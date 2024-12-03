@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../models/pizza.dart';
+import '../models/pizzas/pizza.dart';
 
 class PizzeriaService {
   //URL de base pour l'appel, ici 10.0.2.2 représente le localhost
