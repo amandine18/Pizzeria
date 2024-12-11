@@ -17,7 +17,11 @@ class Cart extends ChangeNotifier{
 
   List<CartItem> get items => _items;
 
-  int totalItems() { return _items.length; }
+  // int totalItems() { return _items.length; }
+  //Au lieu de récupérer la taille de la liste contenant les items du panier (_items.length), on initie une valeur total à 0 et avec la fonction fold et on y ajoute pour chaque item du panier sa quantité
+  int totalItems() {
+    return items.fold(0, (total, item) => total + item.quantity);
+  }
   CartItem getCartItem(int index) {
     return _items[index];
   }

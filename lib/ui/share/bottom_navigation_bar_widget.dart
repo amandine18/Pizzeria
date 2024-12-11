@@ -51,9 +51,9 @@ class BottomNavigationBarWidget extends StatelessWidget {
             case 1:
               page = '/panier';
               break;
-            // case 3:
-            //   page = '/profil';
-            //   break;
+            case 3:
+              page = '/profil';
+              break;
           }
           Navigator.pushNamed(context, page);
         }

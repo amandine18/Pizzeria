@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pizzeria/ui/share/panier.dart';
 import 'package:pizzeria/ui/pizzas/pizza_list.dart';
+import 'package:pizzeria/ui/share/profil.dart';
 import 'package:provider/provider.dart';
 import 'models/share/cart.dart';
 import 'models/share/menu.dart';
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
       home: MyHomePage(title: 'Notre pizzéria'),
       //Start the app witj the "/" named route. In this case the app starts on the FirstScreen Widget
       routes: {
-        // '/profil': (context) => Profil(),
+        '/profil': (context) => UserProfilPage(),
         '/panier': (context) => Panier(),
       },
     );
