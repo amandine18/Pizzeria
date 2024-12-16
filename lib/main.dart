@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pizzeria/ui/share/commandes.dart';
+import 'package:pizzeria/ui/share/paiement.dart';
 import 'package:pizzeria/ui/share/panier.dart';
 import 'package:pizzeria/ui/pizzas/pizza_list.dart';
 import 'package:pizzeria/ui/share/profil.dart';
@@ -40,6 +42,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/profil': (context) => UserProfilPage(),
         '/panier': (context) => Panier(),
+        '/paiement': (context) => Paiement(),
+        '/commandes': (context) => OrdersPage(),
       },
     );
   }

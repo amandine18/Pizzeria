@@ -14,6 +14,7 @@ class CartItem {
 
 class Cart extends ChangeNotifier{
   final List<CartItem> _items = [];
+  final List<List<CartItem>> _orders = [];
 
   List<CartItem> get items => _items;
 
@@ -78,6 +79,12 @@ class Cart extends ChangeNotifier{
 
   // Vide le panier
   void clearCart() {
-    _items.clear();
+    if (_items.isNotEmpty) {
+      _orders.add(List.from(_items)); // Sauvegarder la commande dans l'historique
+      _items.clear();
+      notifyListeners();
+    }
   }
+
+  List<List<CartItem>> get orders => _orders;
 }

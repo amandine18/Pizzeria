@@ -264,6 +264,7 @@ class _CartTotal extends StatelessWidget {
                           ),
                           onPressed: () {
                             print('Valider');
+                            Navigator.pushNamed(context, '/paiement');
                           },
                         ),
                       ),
@@ -278,103 +279,3 @@ class _CartTotal extends StatelessWidget {
     );
   }
 }
-
-  
-
-            
-
-  //         Container(
-  //           padding: const EdgeInsets.all(8.0),
-  //           child: Table(
-  //             columnWidths: const <int, TableColumnWidth>{
-  //               0: FlexColumnWidth(),
-  //               1: FlexColumnWidth(),
-  //               2: FixedColumnWidth(65),
-  //             },
-  //             defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-  //             children: <TableRow>[
-  //               TableRow(
-  //                 children: <Widget>[
-  //                   Container(),
-  //                   const TableCell(
-  //                     verticalAlignment: TableCellVerticalAlignment.middle,
-  //                     child: Text(
-  //                       'TOTAL HT',
-  //                       style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey),
-  //                     )
-  //                   ),
-  //                   TableCell(
-  //                     verticalAlignment: TableCellVerticalAlignment.middle,
-  //                     child: Text(
-  //                       '${ht.toStringAsFixed(2)} €',
-  //                       style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.grey),
-  //                     )
-  //                   ),
-  //                 ],
-  //               ),
-  //               TableRow(
-  //                 children: <Widget>[
-  //                   Container(),
-  //                   const TableCell(
-  //                     verticalAlignment: TableCellVerticalAlignment.middle,
-  //                     child: Text(
-  //                       'TVA',
-  //                       style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey),
-  //                     )
-  //                   ),
-  //                   TableCell(
-  //                     verticalAlignment: TableCellVerticalAlignment.middle,
-  //                     child: Text(
-  //                       '${tva.toStringAsFixed(2)} €',
-  //                       style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.grey),
-  //                     )
-  //                   ),
-  //                 ],
-  //               ),
-  //               TableRow(
-  //                 children: <Widget>[
-  //                   Container(),
-  //                   const TableCell(
-  //                     verticalAlignment: TableCellVerticalAlignment.middle,
-  //                     child: Text(
-  //                       'TOTAL TTC',
-  //                       style: TextStyle(fontWeight: FontWeight.bold, color: Color.fromARGB(255, 6, 105, 187)),
-  //                     )
-  //                   ),
-  //                   TableCell(
-  //                     verticalAlignment: TableCellVerticalAlignment.middle,
-  //                     child: Text(
-  //                       '${total.toStringAsFixed(2)} €',
-  //                       style: const TextStyle(fontWeight: FontWeight.bold, color: Color.fromARGB(255, 6, 105, 187)),
-  //                     )
-  //                   ),
-  //                 ],
-  //               ),
-  //             ],
-  //           ),
-  //         ),
-  //         Row(
-  //           children: [
-  //             Expanded(
-  //               child: Container(
-  //                 padding: const EdgeInsets.all(8.0),
-  //                 child: ElevatedButton(
-  //                   style: ButtonStyle(
-  //                     backgroundColor: WidgetStateProperty.all<Color>(const Color.fromARGB(255, 194, 35, 35)),
-  //                   ),
-  //                   child: const Text(
-  //                     'Valider le panier',
-  //                     style:  TextStyle(color: Colors.white),
-  //                   ),
-  //                   onPressed: () {
-  //                     print('Valider');
-  //                   },
-  //                 ),
-  //               ),
-  //             ),
-  //           ],
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
