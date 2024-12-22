@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pizzeria/ui/boissons/boisson_list.dart';
 import 'package:pizzeria/ui/share/commandes.dart';
 import 'package:pizzeria/ui/share/paiement.dart';
 import 'package:pizzeria/ui/share/panier.dart';
@@ -77,6 +78,12 @@ class MyHomePage extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => PizzaList(_cart)),
+                  );
+                  break;
+                case 4:
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => BoissonList(_cart)),
                   );
                   break;
               }

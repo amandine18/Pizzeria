@@ -22,32 +22,92 @@ class _PizzaListState extends State<PizzaList> {
 
   late Future<List<Pizza>> _pizzas;
   final PizzeriaService _service = PizzeriaService();
+  final TextEditingController _searchController = TextEditingController();
+
+  List<Pizza> _filteredPizzas = [];
+  List<Pizza> _allPizzas = [];
 
   @override
   void initState() {
     super.initState();
     _pizzas = _service.fetchPizzas();
+    _pizzas.then((pizzas) {
+      setState(() {
+        _allPizzas = pizzas;
+        _filteredPizzas = pizzas;
+      });
+    });
+    _searchController.addListener(_filterPizzas);
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  void _filterPizzas() {
+    final query = _searchController.text.toLowerCase();
+    setState(() {
+      if (query.isEmpty) {
+        _filteredPizzas = List.from(_allPizzas);
+      } else {
+        _filteredPizzas = _allPizzas.where((pizza) {
+          return pizza.title.toLowerCase().contains(query) ||
+                 pizza.garniture.toLowerCase().contains(query);
+        }).toList();
+      }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppbarWidget(title),
-      body: FutureBuilder<List<Pizza>>(
-        future: _pizzas, 
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return _buildListView(snapshot.data!);
-          } else if (snapshot.hasError) {
-            return Center(
-              child: Text(
-                'Impossible de récupérer les données : ${snapshot.error}',
-                style : PizzeriaStyle.errorTextStyle,
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              controller: _searchController,
+              decoration: InputDecoration(
+                labelText: 'Rechercher une pizza',
+                prefixIcon: const Icon(Icons.search),
+                suffixIcon: _searchController.text.isNotEmpty
+                  ? IconButton(
+                      icon: const Icon(Icons.clear),
+                      onPressed: () {
+                        _searchController.clear();
+                        _filterPizzas(); //Réinitialise les pizzas affichées
+                      },
+                    )
+                  : null,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
               ),
-            );
-          }
-          return const Center(child: CircularProgressIndicator());
-        },
+            ),
+          ),
+          Expanded(
+            // child: FutureBuilder<List<Pizza>>(
+            //   future: _pizzas, 
+            //   builder: (context, snapshot) {
+            //     if (snapshot.hasData) {
+            //       return _buildListView(snapshot.data!);
+            //     } else if (snapshot.hasError) {
+            //       return Center(
+            //         child: Text(
+            //           'Impossible de récupérer les données : ${snapshot.error}',
+            //           style : PizzeriaStyle.errorTextStyle,
+            //         ),
+            //       );
+            //     }
+            //     return const Center(child: CircularProgressIndicator());
+            //   },
+            // )
+            child: _buildListView(_filteredPizzas),
+          ),
+        ]
       ),
       bottomNavigationBar: const BottomNavigationBarWidget(0, pageNum: 1),
     );
@@ -57,7 +117,7 @@ class _PizzaListState extends State<PizzaList> {
     return Card(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
-          bottom: Radius.circular(10.0), top: Radius.circular(2.0)),
+          bottom: Radius.circular(10.0), top: Radius.circular(10.0)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,7 +133,8 @@ class _PizzaListState extends State<PizzaList> {
             },
             child: _builPizzaDetails(pizza),
           ),
-          BuyButtonWidget(pizza),
+          // BuyButtonWidget(pizza),
+          BuyButtonWidget<Pizza>(pizza)
         ],
       ),
     );

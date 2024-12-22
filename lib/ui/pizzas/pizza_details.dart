@@ -24,7 +24,7 @@ class _PizzaDetailsState extends State<PizzaDetails> {
     return Scaffold(
       appBar: AppbarWidget(widget._pizza.title),
       body: ListView(
-        padding: const EdgeInsets.all(4.0),
+        padding: const EdgeInsets.all(8.0),
         children: [
           Text(
             'Pizza ${widget._pizza.title}',
@@ -61,7 +61,7 @@ class _PizzaDetailsState extends State<PizzaDetails> {
           ),
           _buildDropDownSauces(),
           TotalWidget(widget._pizza.total),
-          BuyButtonWidget(widget._pizza),
+          BuyButtonWidget<Pizza>(widget._pizza),
           // _buildDropDownSauces(),
           // TotalWidget(widget._pizza.total),
           // BuyButtonWidget(widget._pizza, widget._cart),

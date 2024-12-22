@@ -12,7 +12,7 @@ class Paiement extends StatefulWidget {
 
 class _PaiementState extends State<Paiement> {
   String _livraisonChoice = 'Sur place';
-  String _paymentChoice = 'Carte de crédit';
+  String _paymentChoice = 'CB';
 
   @override
   Widget build(BuildContext context) {
@@ -77,8 +77,8 @@ class _PaiementState extends State<Paiement> {
             Column(
               children: [
                 RadioListTile<String>(
-                  title: const Text('Carte de crédit'),
-                  value: 'Carte de crédit',
+                  title: const Text('CB'),
+                  value: 'CB',
                   groupValue: _paymentChoice,
                   onChanged: (value) {
                     setState(() {
@@ -196,7 +196,7 @@ class _PaiementState extends State<Paiement> {
                         style:  TextStyle(color: Colors.white),
                       ),
                       onPressed: () {
-                        cart.clearCart(); // Méthode à ajouter dans votre modèle de panier
+                        cart.addOrder(_livraisonChoice, _paymentChoice);
                         Navigator.pushNamed(context, '/commandes');
                       },
                     ),

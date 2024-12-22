@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:pizzeria/models/boissons/boisson.dart';
 import 'package:pizzeria/ui/share/bottom_navigation_bar_widget.dart';
 import 'package:pizzeria/ui/share/pizzeria_style.dart';
 import 'package:provider/provider.dart';
@@ -51,8 +52,18 @@ class _CartList extends StatelessWidget {
   }
 
   Widget _buildItem(BuildContext context, CartItem cartItem) {
-    final pizza = cartItem.pizza;
+    // final pizza = cartItem.pizza;
+    final product = cartItem.product;
 
+    if (product is Pizza) {
+      return _buildPizzaItem(context, product, cartItem);
+    } else if (product is Boisson) {
+      return _buildBoissonItem(context, product, cartItem);
+    }
+    return const SizedBox.shrink();
+  }
+
+  Widget _buildPizzaItem(BuildContext context, Pizza pizza, CartItem cartItem) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
@@ -79,7 +90,6 @@ class _CartList extends StatelessWidget {
                       children: [
                         Text('Prix initial : ${pizza.price} €'),
                         Row(
-                          
                           children: [
                             IconButton(
                               icon: const Icon(Icons.remove),
@@ -108,38 +118,20 @@ class _CartList extends StatelessWidget {
                   //Ajout des lignes suivantes pour afficher les éléments
                   Container(
                     padding: const EdgeInsets.only(bottom: 5.0),
-                    child: Table(
-                      columnWidths: const <int, TableColumnWidth>{
-                        0: FlexColumnWidth(95),
-                        1: FlexColumnWidth(80),
-                        2: FixedColumnWidth(105),
-                      },
-                      defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-                      children: <TableRow>[
-                        TableRow(
-                          children: <Widget>[
-                            TableCell(
-                              verticalAlignment: TableCellVerticalAlignment.middle,
-                              child: Text(
-                                '${Pizza.pates[pizza.pate].name}',
-                                style: const TextStyle(color: Colors.grey),
-                              )
-                            ),
-                            TableCell(
-                              verticalAlignment: TableCellVerticalAlignment.middle,
-                              child: Text(
-                                '${Pizza.tailles[pizza.taille].name}',
-                                style: const TextStyle(color: Colors.grey),
-                              )
-                            ),
-                            TableCell(
-                              verticalAlignment: TableCellVerticalAlignment.middle,
-                              child: Text(
-                                'Sauce ${Pizza.sauces[pizza.sauce].name.split(' ').last}',
-                                style: const TextStyle(color: Colors.grey),
-                              )
-                            ),
-                          ],
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          Pizza.pates[pizza.pate].name,
+                          style: TextStyle(color: Colors.grey),
+                        ),
+                        Text(
+                          Pizza.tailles[pizza.taille].name,
+                          style: TextStyle(color: Colors.grey),
+                        ),
+                        Text(
+                          'Sauce ${Pizza.sauces[pizza.sauce].name.split(' ').last}',
+                          style: TextStyle(color: Colors.grey),
                         ),
                       ],
                     ),
@@ -147,6 +139,84 @@ class _CartList extends StatelessWidget {
                   Text(
                     'Sous-total : ${(pizza.total * cartItem.quantity).toStringAsFixed(2)} €',
                     style: const TextStyle(color: Color.fromARGB(255, 6, 105, 187), fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildBoissonItem(BuildContext context, Boisson boisson, CartItem cartItem) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        children: [
+          Image.network(
+            Boisson.fixUrl(boisson.image),
+            height: 105,
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    boisson.title,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 38,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Prix initial : ${boisson.price} €'),
+                        Row(
+                          children: [
+                            IconButton(
+                              icon: const Icon(Icons.remove),
+                              onPressed: () {
+                                context.read<Cart>().removeProduct(boisson);
+                              },
+                            ),
+                            Text('${cartItem.quantity}'),
+                            IconButton(
+                              icon: const Icon(Icons.add),
+                              onPressed: () {
+                                context.read<Cart>().addProduct(boisson);
+                              },
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  Text('Prix actuel : ${boisson.total} €'),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        boisson.hasGlacons ? "Avec glaçons" : "Sans glaçons",
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                      Text(
+                        'Volume : ${Boisson.volumes[boisson.volume].name}', // Utilisation du volume sélectionné
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 5.0),
+                  ),
+                  Text(
+                    'Sous-total : ${(boisson.total * cartItem.quantity).toStringAsFixed(2)} €',
+                    style: const TextStyle(
+                      color: Color.fromARGB(255, 6, 105, 187),
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ],
               ),
