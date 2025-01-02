@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:pizzeria/models/pizzas/option_item.dart';
 
 class Boisson{
